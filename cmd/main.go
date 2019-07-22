@@ -1,14 +1,47 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "fmt"
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
-	})
 
-	http.ListenAndServe(":8000", nil)
+	// `var` declares 1 or more variables.
+	var a = "initial"
+	fmt.Println(a)
+
+	g, h := 5, 4
+	fmt.Printf("g = %v, h = %v\n", g, h)
+	// You can declare multiple variables at once.
+	var b, c int = 1, 2
+	fmt.Println(b, c)
+
+	// Go will infer the type of initialized variables.
+	var d = true
+	fmt.Println(d)
+
+	// Variables declared without a corresponding
+	// initialization are _zero-valued_. For example, the
+	// zero value for an `int` is `0`.
+	var e int
+	fmt.Println(e)
+
+	// The `:=` syntax is shorthand for declaring and
+	// initializing a variable, e.g. for
+	// `var f string = "apple"` in this case.
+	f := "apple"
+	fmt.Println(f)
+
+	sample := PrintStruct("John")
+	fmt.Println(sample.Name, sample.Age)
+}
+
+type ABC struct {
+	Name string
+	Age  int
+}
+
+//func FunctionName()
+
+func PrintStruct(name string) ABC {
+	//var name string
+	return ABC{name, 20}
 }
